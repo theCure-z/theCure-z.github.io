@@ -6,11 +6,29 @@
       <description>Last 10 notes on Quartz 5</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>强化学习</title>
+    <link>https://quartz.jzhao.xyz/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</link>
+    <guid>https://quartz.jzhao.xyz/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Fri, 21 Aug 2026 09:50:27 GMT</pubDate>
+  </item><item>
     <title>Tag Index</title>
     <link>https://quartz.jzhao.xyz/tags/</link>
     <guid>https://quartz.jzhao.xyz/tags/</guid>
     <description><![CDATA[  ]]></description>
-    <pubDate>Fri, 21 Aug 2026 07:50:22 GMT</pubDate>
+    <pubDate>Fri, 21 Aug 2026 09:50:27 GMT</pubDate>
+  </item><item>
+    <title>1 Intro</title>
+    <link>https://quartz.jzhao.xyz/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/1-intro</link>
+    <guid>https://quartz.jzhao.xyz/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/1-intro</guid>
+    <description><![CDATA[  Reinforcement learning is a framework for solving control tasks (also called decision problems) by building agents that learn from the environment by interacting with it through trial and error and receiving rewards (positive or negative) as unique feedback. ]]></description>
+    <pubDate>Fri, 21 Aug 2026 09:45:37 GMT</pubDate>
+  </item><item>
+    <title>Welcome to Quartz 5</title>
+    <link>https://quartz.jzhao.xyz/</link>
+    <guid>https://quartz.jzhao.xyz/</guid>
+    <description><![CDATA[ Quartz is a fast, batteries-included static-site generator that transforms Markdown content into fully functional websites. ]]></description>
+    <pubDate>Fri, 21 Aug 2026 08:12:19 GMT</pubDate>
   </item>
     </channel>
   </rss>
