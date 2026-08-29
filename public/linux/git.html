@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>git</title><meta charset="utf-8"/><link rel="preload" href="../index.css" as="style"/><link rel="preload" href="../prescript.js" as="script"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Z's blog"/><meta property="og:title" content="git"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="git"/><meta name="twitter:description" content="Git 常用概念总结 Git 是一个分布式版本控制系统，用于管理文件的历史版本、多人协作开发以及代码发布。 1."/><meta property="og:description" content="Git 常用概念总结 Git 是一个分布式版本控制系统，用于管理文件的历史版本、多人协作开发以及代码发布。 1."/><meta property="og:image:alt" content="Git 常用概念总结 Git 是一个分布式版本控制系统，用于管理文件的历史版本、多人协作开发以及代码发布。 1."/><meta property="twitter:domain" content="quartz.jzhao.xyz"/><meta property="og:url" content="https://quartz.jzhao.xyz/linux/git"/><meta property="twitter:url" content="https://quartz.jzhao.xyz/linux/git"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Git 常用概念总结 Git 是一个分布式版本控制系统，用于管理文件的历史版本、多人协作开发以及代码发布。 1."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-735924e0.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-589c1cea.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-bbc3f7c0.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-2911f5d1.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-e427079e.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-53b25b2b.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-c93c6a44.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-8a06014f.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-77d6a441.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-6ee21cee.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-1ea6ad18.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-34bdfded.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-788c9ca3.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-642859cd.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-4abc06bd.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-274a3dfe.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-94cb6c84.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-58d5ff56.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../component-7262b5a7.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../static/resource-style-a5c806d2.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../static/resource-style-6bd36952.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../static/resource-style-9857b007.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../static/resource-style-d3a1a224.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted%20Grotesk%3Awght%40400%3B700&amp;family=Source%20Sans%20Pro%3Aital%2Cwght%400%2C400%3B0%2C600%3B1%2C400%3B1%2C600&amp;family=IBM%20Plex%20Mono%3Awght%40400%3B600&amp;display=swap"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://quartz.jzhao.xyz/linux/git-og-image.webp"/><meta property="og:image:url" content="https://quartz.jzhao.xyz/linux/git-og-image.webp"/><meta name="twitter:image" content="https://quartz.jzhao.xyz/linux/git-og-image.webp"/><meta property="og:image:type" content="image/webp"/></head><body data-slug="linux/git" data-basepath><div id="quartz-root" class="page" data-frame="default"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">Z's blog</a></h2><div class="mobile-only"><div class="spacer"></div></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 0.5rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button" aria-label="Search" aria-expanded="false"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something..." placeholder="Search for something..."/><div class="search-layout" data-preview="true" data-field-priority="[&quot;title&quot;,&quot;content&quot;,&quot;tags&quot;]"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode" aria-label="Dark mode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode" aria-label="Reader mode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer nav-files-container" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a2, b2) => {\n    if (!a2.isFolder &amp;&amp; !b2.isFolder || a2.isFolder &amp;&amp; b2.isFolder) {\n      return (a2.displayName || \&quot;\&quot;).localeCompare(b2.displayName || \&quot;\&quot;, void 0, {\n        numeric: true,\n        sensitivity: \&quot;base\&quot;\n      });\n    }\n    if (!a2.isFolder &amp;&amp; b2.isFolder) {\n      return 1;\n    }\n    return -1;\n  }&quot;,&quot;filterFn&quot;:&quot;(node) => node.slugSegment !== \&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;(node) => {\n    return node;\n  }&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-5" aria-label="Explorer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-5" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#" class="nav-file-title tree-item-self"></a></li></template><template id="template-folder"><li><div class="folder-container nav-folder-title tree-item-self"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon nav-folder-collapse-indicator collapse-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content tree-item-children"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../linux/">Linux</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>git</a></div></nav><h1 class="article-title">git</h1><p show-comma="true" class="content-meta"><time datetime="2026-08-29T14:34:33.467Z">Aug 29, 2026</time><span>9 min read</span></p></div></div><article class="popover-hint"><div class="markdown-preview-view markdown-rendered"><h1 id="git-常用概念总结">Git 常用概念总结<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#git-常用概念总结" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Git 是一个<strong>分布式版本控制系统</strong>，用于管理文件的历史版本、多人协作开发以及代码发布。</p>
+<hr/>
+<h1 id="1-git-基本概念">1. Git 基本概念<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-git-基本概念" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="11-版本控制">1.1 版本控制<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#11-版本控制" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>版本控制用于记录文件随时间的变化，使开发者能够：</p>
+<ul>
+<li>查看历史修改</li>
+<li>回退到旧版本</li>
+<li>比较不同版本差异</li>
+<li>多人协作开发</li>
+</ul>
+<p>常见版本控制系统：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>类型</th><th>代表工具</th><th>特点</th></tr></thead><tbody><tr><td>集中式版本控制</td><td>SVN</td><td>中央服务器保存全部版本</td></tr><tr><td>分布式版本控制</td><td>Git</td><td>每个人都有完整仓库</td></tr></tbody></table></div>
+<hr/>
+<h1 id="2-git-三大区域">2. Git 三大区域<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-git-三大区域" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Git 文件状态主要存在三个区域：</p>
+<pre><code>工作区 Working Directory
+        |
+        | git add
+        ↓
+暂存区 Staging Area
+        |
+        | git commit
+        ↓
+本地仓库 Local Repository
+        |
+        | git push
+        ↓
+远程仓库 Remote Repository
+</code></pre>
+<hr/>
+<h2 id="21-工作区working-directory">2.1 工作区（Working Directory）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-工作区working-directory" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>当前电脑中实际看到的文件目录。
+例如：</p>
+<pre><code>~/project
+├── main.cpp
+├── README.md
+└── src/
+</code></pre>
+<p>特点：</p>
+<ul>
+<li>可以直接修改文件</li>
+<li>修改不会自动进入 Git 历史</li>
+</ul>
+<p>查看状态：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> status</span></span></code></pre></figure>
+<hr/>
+<h2 id="22-暂存区staging-area">2.2 暂存区（Staging Area）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-暂存区staging-area" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>也叫：</p>
+<ul>
+<li>index</li>
+<li>stage</li>
+</ul>
+<p>作用：
+保存下一次提交（commit）的内容。
+加入暂存区：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> add</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> filename</span></span></code></pre></figure>
+<p>全部加入：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> add</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> .</span></span></code></pre></figure>
+<p>查看暂存状态：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> status</span></span></code></pre></figure>
+<hr/>
+<h2 id="23-本地仓库local-repository">2.3 本地仓库（Local Repository）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#23-本地仓库local-repository" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Git 保存版本历史的位置。
+提交：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> commit</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> -m</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> &quot;message&quot;</span></span></code></pre></figure>
+<p>例如：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> commit</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> -m</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> &quot;add login function&quot;</span></span></code></pre></figure>
+<p>每一次 commit 都产生一个版本节点。</p>
+<hr/>
+<h2 id="24-远程仓库remote-repository">2.4 远程仓库（Remote Repository）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#24-远程仓库remote-repository" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>存放在服务器上的 Git 仓库。</p>
+<p>常见平台：</p>
+<ul>
+<li>GitHub</li>
+<li>GitLab</li>
+<li>Gitee</li>
+</ul>
+<hr/>
+<h1 id="3-git-仓库repository">3. Git 仓库（Repository）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-git-仓库repository" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>仓库就是 Git 管理的项目目录。
+创建仓库：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> init</span></span></code></pre></figure>
+<p>生成：</p>
+<pre><code>.git/
+</code></pre>
+<p>目录。例如：</p>
+<pre><code>project
+├── .git
+├── main.cpp
+└── README.md
+</code></pre>
+<p><code>.git</code> 保存：</p>
+<ul>
+<li>提交记录</li>
+<li>分支信息</li>
+<li>配置信息</li>
+<li>对象数据库</li>
+</ul>
+<p>不能手动修改 <code>.git</code>。</p>
+<hr/>
+<h1 id="4-git-对象模型">4. Git 对象模型<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-git-对象模型" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Git 内部主要保存四类对象：</p>
+<pre><code>Blob
+ |
+ | 保存文件内容
+
+Tree
+ |
+ | 保存目录结构
+
+Commit
+ |
+ | 保存一次提交
+
+Tag
+ |
+ | 给提交打标签
+</code></pre>
+<p>关系：</p>
+<pre><code>Commit
+  |
+  ↓
+Tree
+  |
+  ↓
+Blob
+</code></pre>
+<hr/>
+<h1 id="5-commit提交">5. Commit（提交）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-commit提交" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Commit 是 Git 最核心概念。
+一次 commit 表示：</p>
+<blockquote>
+<p>项目在某个时间点的完整状态。</p>
+</blockquote>
+<p>查看提交：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> log</span></span></code></pre></figure>
+<p>简洁查看：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> log</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> --oneline</span></span></code></pre></figure>
+<p>示例：</p>
+<pre><code>a82f3c1 add README
+b712e20 fix bug
+9a112cc initial commit
+</code></pre>
+<p>其中：</p>
+<pre><code>a82f3c1
+</code></pre>
+<p>是 commit hash。</p>
+<hr/>
+<h1 id="6-git-hash">6. Git Hash<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-git-hash" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Git 使用 SHA-1/SHA-256 哈希标识对象。
+例如：</p>
+<pre><code>a82f3c1d7e8f...
+</code></pre>
+<p>特点：</p>
+<ul>
+<li>唯一</li>
+<li>内容改变，hash改变</li>
+<li>用于定位版本</li>
+</ul>
+<p>查看当前 commit：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> rev-parse</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> HEAD</span></span></code></pre></figure>
+<hr/>
+<h1 id="7-head">7. HEAD<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-head" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>HEAD 表示：</p>
+<blockquote>
+<p>当前所在的位置</p>
+</blockquote>
+<p>通常指向当前分支最新 commit。
+例如：</p>
+<pre><code>HEAD
+ |
+main
+ |
+commit C
+ |
+commit B
+ |
+commit A
+</code></pre>
+<p>查看：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> log</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> --decorate</span></span></code></pre></figure>
+<hr/>
+<h1 id="8-分支branch">8. 分支（Branch）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-分支branch" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>分支本质：</p>
+<blockquote>
+<p>一个指向 commit 的指针。</p>
+</blockquote>
+<p>例如：</p>
+<pre><code>        C---D  feature
+       /
+A---B
+       \
+        E---F  main
+</code></pre>
+<p>main 和 feature 都基于 B 开发。</p>
+<hr/>
+<h1 id="9-创建分支">9. 创建分支<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#9-创建分支" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>创建：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> branch</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> dev</span></span></code></pre></figure>
+<p>切换：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> checkout</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> dev</span></span></code></pre></figure>
+<p>或者：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> switch</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> dev</span></span></code></pre></figure>
+<p>创建并切换：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> checkout</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> -b</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> dev</span></span></code></pre></figure>
+<p>新版：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> switch</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> -c</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> dev</span></span></code></pre></figure>
+<hr/>
+<h1 id="10-查看分支">10. 查看分支<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#10-查看分支" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> branch</span></span></code></pre></figure>
+<p>结果：</p>
+<pre><code>* main
+  dev
+</code></pre>
+<p><code>*</code> 表示当前分支。</p>
+<p>查看远程分支：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> branch</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> -r</span></span></code></pre></figure>
+<p>查看所有：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> branch</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> -a</span></span></code></pre></figure>
+<hr/>
+<h1 id="11-合并merge">11. 合并（Merge）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#11-合并merge" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>将一个分支合入当前分支。
+例如：
+当前：</p>
+<pre><code>main
+</code></pre>
+<p>合并：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> merge</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> dev</span></span></code></pre></figure>
+<p>结果：</p>
+<pre><code>      C---D dev
+     /
+A---B---E main
+</code></pre>
+<hr/>
+<h1 id="12-快进合并fast-forward">12. 快进合并（Fast Forward）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#12-快进合并fast-forward" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>如果目标分支没有新的提交：</p>
+<pre><code>A---B main
+     \
+      C---D dev
+</code></pre>
+<p>merge 后：</p>
+<pre><code>A---B---C---D main
+</code></pre>
+<p>没有产生新的 commit。</p>
+<hr/>
+<h1 id="13-三方合并three-way-merge">13. 三方合并（Three-way Merge）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#13-三方合并three-way-merge" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>两个分支都有修改：</p>
+<pre><code>      C---D dev
+     /
+A---B
+     \
+      E---F main
+</code></pre>
+<p>Git 创建新的 merge commit：</p>
+<pre><code>      C---D
+     /     \
+A---B       G
+     \     /
+      E---F
+</code></pre>
+<hr/>
+<h1 id="14-冲突conflict">14. 冲突（Conflict）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#14-冲突conflict" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>当两个分支修改同一位置：</p>
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+
+当前分支内容
+
+=======
+
+合并分支内容
+
+>>>>>>> dev
+</code></pre>
+<p>解决：</p>
+<ol>
+<li>手动修改文件</li>
+<li>删除冲突标记</li>
+<li>添加：</li>
+</ol>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> add</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> file</span></span></code></pre></figure>
+<ol start="4">
+<li>提交：</li>
+</ol>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> commit</span></span></code></pre></figure>
+<hr/>
+<h1 id="15-rebase">15. Rebase<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#15-rebase" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>变基：</p>
+<blockquote>
+<p>修改提交历史，将分支移动到新的基础上。</p>
+</blockquote>
+<p>merge:</p>
+<pre><code>A---B---C main
+     \
+      D---E dev
+</code></pre>
+<p>rebase:</p>
+<pre><code>A---B---C---D'---E'
+</code></pre>
+<p>特点：</p>
+<ul>
+<li>历史更线性</li>
+<li>不产生 merge commit</li>
+</ul>
+<p>命令：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> rebase</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> main</span></span></code></pre></figure>
+<hr/>
+<h1 id="16-merge-和-rebase-区别">16. Merge 和 Rebase 区别<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#16-merge-和-rebase-区别" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>Merge</th><th>Rebase</th></tr></thead><tbody><tr><td>是否修改历史</td><td>否</td><td>是</td></tr><tr><td>是否产生新commit</td><td>可能</td><td>不一定</td></tr><tr><td>历史结构</td><td>分叉</td><td>线性</td></tr><tr><td>推荐场景</td><td>公共分支</td><td>个人开发分支</td></tr></tbody></table></div>
+<hr/>
+<h1 id="17-远程仓库-remote">17. 远程仓库 Remote<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#17-远程仓库-remote" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>查看：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> remote</span></span></code></pre></figure>
+<p>详细：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> remote</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> -v</span></span></code></pre></figure>
+<p>添加：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> remote</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> add</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> origin</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> URL</span></span></code></pre></figure>
+<p>例如：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> remote</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> add</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> origin</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> git@github.com:user/repo.git</span></span></code></pre></figure>
+<hr/>
+<h1 id="18-push">18. Push<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#18-push" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>上传本地提交：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> push</span></span></code></pre></figure>
+<p>第一次：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> push</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> -u</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> origin</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> main</span></span></code></pre></figure>
+<p>其中：</p>
+<pre><code>origin
+</code></pre>
+<p>表示远程仓库名称。</p>
+<pre><code>main
+</code></pre>
+<p>表示分支。</p>
+<hr/>
+<h1 id="19-pull">19. Pull<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#19-pull" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>下载并合并远程代码：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> pull</span></span></code></pre></figure>
+<p>等价：</p>
+<pre><code>git fetch
++
+git merge
+</code></pre>
+<hr/>
+<h1 id="20-fetch">20. Fetch<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#20-fetch" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>只下载远程信息，不合并：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> fetch</span></span></code></pre></figure>
+<p>例如：</p>
+<pre><code>远程:
+
+A---B---C
+
+本地:
+
+A---B
+</code></pre>
+<p>fetch 后：</p>
+<pre><code>origin/main
+
+A---B---C
+
+main
+
+A---B
+</code></pre>
+<hr/>
+<h1 id="21-clone">21. Clone<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-clone" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>复制远程仓库：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> clone</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> URL</span></span></code></pre></figure>
+<p>例如：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> clone</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> https://github.com/user/project.git</span></span></code></pre></figure>
+<p>作用：</p>
+<ul>
+<li>下载代码</li>
+<li>自动建立 remote</li>
+</ul>
+<hr/>
+<h1 id="22-git-常用查看命令">22. Git 常用查看命令<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-git-常用查看命令" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>查看状态：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> status</span></span></code></pre></figure>
+<p>查看提交：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> log</span></span></code></pre></figure>
+<p>查看差异：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> diff</span></span></code></pre></figure>
+<p>查看暂存区：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> diff</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> --cached</span></span></code></pre></figure>
+<p>查看分支：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> branch</span></span></code></pre></figure>
+<p>查看远程：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> remote</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> -v</span></span></code></pre></figure>
+<hr/>
+<h1 id="23-撤销操作">23. 撤销操作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#23-撤销操作" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="撤销工作区修改">撤销工作区修改<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#撤销工作区修改" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> checkout</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> --</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> file</span></span></code></pre></figure>
+<p>新版：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> restore</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> file</span></span></code></pre></figure>
+<hr/>
+<h2 id="撤销-add">撤销 add<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#撤销-add" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>取消暂存：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> restore</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> --staged</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> file</span></span></code></pre></figure>
+<hr/>
+<h2 id="修改最后一次提交">修改最后一次提交<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#修改最后一次提交" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> commit</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> --amend</span></span></code></pre></figure>
+<hr/>
+<h2 id="回退版本">回退版本<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#回退版本" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>软回退：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> reset</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> --soft</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> HEAD~1</span></span></code></pre></figure>
+<p>保留修改。</p>
+<p>混合回退：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> reset</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> HEAD~1</span></span></code></pre></figure>
+<p>取消commit，保留文件。</p>
+<p>硬回退：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> reset</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> --hard</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> HEAD~1</span></span></code></pre></figure>
+<p>删除修改。</p>
+<hr/>
+<h1 id="24-git-标签-tag">24. Git 标签 Tag<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#24-git-标签-tag" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>给版本命名：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> tag</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> v1.0</span></span></code></pre></figure>
+<p>查看：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> tag</span></span></code></pre></figure>
+<p>上传：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> push</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> origin</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> v1.0</span></span></code></pre></figure>
+<p>常用于：</p>
+<ul>
+<li>软件发布</li>
+<li>版本管理</li>
+</ul>
+<hr/>
+<h1 id="25-gitignore">25. .gitignore<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#25-gitignore" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>指定不提交的文件。
+例如：</p>
+<pre><code>node_modules/
+
+*.log
+
+.env
+
+build/
+</code></pre>
+<p>查看忽略：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> status</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> --ignored</span></span></code></pre></figure>
+<hr/>
+<h1 id="26-git-工作流程">26. Git 工作流程<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#26-git-工作流程" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="简单个人流程">简单个人流程<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#简单个人流程" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<pre><code>修改文件
+↓
+git add .
+↓
+git commit
+↓
+git push
+</code></pre>
+<hr/>
+<h2 id="团队开发流程">团队开发流程<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#团队开发流程" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<pre><code>main
+ |
+ | clone
+ ↓
+feature branch
+↓
+开发
+↓
+commit
+↓
+push
+↓
+Pull Request
+↓
+merge main
+</code></pre>
+<hr/>
+<h1 id="27-git-常见名词总结">27. Git 常见名词总结<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#27-git-常见名词总结" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>名词</th><th>含义</th></tr></thead><tbody><tr><td>Repository</td><td>仓库</td></tr><tr><td>Working Tree</td><td>工作区</td></tr><tr><td>Stage</td><td>暂存区</td></tr><tr><td>Commit</td><td>提交</td></tr><tr><td>Branch</td><td>分支</td></tr><tr><td>HEAD</td><td>当前指针</td></tr><tr><td>Remote</td><td>远程仓库</td></tr><tr><td>Origin</td><td>默认远程名称</td></tr><tr><td>Clone</td><td>克隆</td></tr><tr><td>Fetch</td><td>获取远程更新</td></tr><tr><td>Pull</td><td>获取并合并</td></tr><tr><td>Push</td><td>上传</td></tr><tr><td>Merge</td><td>合并</td></tr><tr><td>Rebase</td><td>变基</td></tr><tr><td>Tag</td><td>标签</td></tr><tr><td>Hash</td><td>唯一编号</td></tr><tr><td>Conflict</td><td>冲突</td></tr></tbody></table></div>
+<hr/>
+<h1 id="28-最常用-git-命令速查">28. 最常用 Git 命令速查<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#28-最常用-git-命令速查" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment"># 初始化</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> init</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment"># 查看状态</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> status</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment"># 添加文件</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> add</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> .</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment"># 提交</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> commit</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> -m</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> &quot;message&quot;</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment"># 查看历史</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> log</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> --oneline</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment"># 创建分支</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> branch</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> dev</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment"># 切换分支</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> switch</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> dev</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment"># 创建并切换</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> switch</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> -c</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> dev</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment"># 合并分支</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> merge</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> dev</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment"># 拉取远程</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> pull</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment"># 上传</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> push</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment"># 克隆</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> clone</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> URL</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment"># 查看远程</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> remote</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> -v</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment"># 查看差异</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> diff</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment"># 标签</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> tag</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> v1.0</span></span></code></pre></figure>
+<hr/>
+<h1 id="总结">总结<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#总结" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Git 的核心思想：</p>
+<pre><code>文件变化
+    ↓
+工作区
+    ↓ git add
+暂存区
+    ↓ git commit
+本地仓库
+    ↓ git push
+远程仓库
+</code></pre>
+<p>核心对象：</p>
+<pre><code>Commit
+ |
+Tree
+ |
+Blob
+</code></pre>
+<p>核心操作：</p>
+<pre><code>修改
+ → add
+ → commit
+ → branch
+ → merge/rebase
+ → push
+</code></pre></div></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc"><button type="button" class="toc-header" aria-controls="toc-3" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-0" class="toc-content overflow"><li class="depth-0"><a href="#git-常用概念总结" data-for="git-常用概念总结">Git 常用概念总结</a></li><li class="depth-0"><a href="#1-git-基本概念" data-for="1-git-基本概念">1. Git 基本概念</a></li><li class="depth-1"><a href="#11-版本控制" data-for="11-版本控制">1.1 版本控制</a></li><li class="depth-0"><a href="#2-git-三大区域" data-for="2-git-三大区域">2. Git 三大区域</a></li><li class="depth-1"><a href="#21-工作区working-directory" data-for="21-工作区working-directory">2.1 工作区（Working Directory）</a></li><li class="depth-1"><a href="#22-暂存区staging-area" data-for="22-暂存区staging-area">2.2 暂存区（Staging Area）</a></li><li class="depth-1"><a href="#23-本地仓库local-repository" data-for="23-本地仓库local-repository">2.3 本地仓库（Local Repository）</a></li><li class="depth-1"><a href="#24-远程仓库remote-repository" data-for="24-远程仓库remote-repository">2.4 远程仓库（Remote Repository）</a></li><li class="depth-0"><a href="#3-git-仓库repository" data-for="3-git-仓库repository">3. Git 仓库（Repository）</a></li><li class="depth-0"><a href="#4-git-对象模型" data-for="4-git-对象模型">4. Git 对象模型</a></li><li class="depth-0"><a href="#5-commit提交" data-for="5-commit提交">5. Commit（提交）</a></li><li class="depth-0"><a href="#6-git-hash" data-for="6-git-hash">6. Git Hash</a></li><li class="depth-0"><a href="#7-head" data-for="7-head">7. HEAD</a></li><li class="depth-0"><a href="#8-分支branch" data-for="8-分支branch">8. 分支（Branch）</a></li><li class="depth-0"><a href="#9-创建分支" data-for="9-创建分支">9. 创建分支</a></li><li class="depth-0"><a href="#10-查看分支" data-for="10-查看分支">10. 查看分支</a></li><li class="depth-0"><a href="#11-合并merge" data-for="11-合并merge">11. 合并（Merge）</a></li><li class="depth-0"><a href="#12-快进合并fast-forward" data-for="12-快进合并fast-forward">12. 快进合并（Fast Forward）</a></li><li class="depth-0"><a href="#13-三方合并three-way-merge" data-for="13-三方合并three-way-merge">13. 三方合并（Three-way Merge）</a></li><li class="depth-0"><a href="#14-冲突conflict" data-for="14-冲突conflict">14. 冲突（Conflict）</a></li><li class="depth-0"><a href="#15-rebase" data-for="15-rebase">15. Rebase</a></li><li class="depth-0"><a href="#16-merge-和-rebase-区别" data-for="16-merge-和-rebase-区别">16. Merge 和 Rebase 区别</a></li><li class="depth-0"><a href="#17-远程仓库-remote" data-for="17-远程仓库-remote">17. 远程仓库 Remote</a></li><li class="depth-0"><a href="#18-push" data-for="18-push">18. Push</a></li><li class="depth-0"><a href="#19-pull" data-for="19-pull">19. Pull</a></li><li class="depth-0"><a href="#20-fetch" data-for="20-fetch">20. Fetch</a></li><li class="depth-0"><a href="#21-clone" data-for="21-clone">21. Clone</a></li><li class="depth-0"><a href="#22-git-常用查看命令" data-for="22-git-常用查看命令">22. Git 常用查看命令</a></li><li class="depth-0"><a href="#23-撤销操作" data-for="23-撤销操作">23. 撤销操作</a></li><li class="depth-1"><a href="#撤销工作区修改" data-for="撤销工作区修改">撤销工作区修改</a></li><li class="depth-1"><a href="#撤销-add" data-for="撤销-add">撤销 add</a></li><li class="depth-1"><a href="#修改最后一次提交" data-for="修改最后一次提交">修改最后一次提交</a></li><li class="depth-1"><a href="#回退版本" data-for="回退版本">回退版本</a></li><li class="depth-0"><a href="#24-git-标签-tag" data-for="24-git-标签-tag">24. Git 标签 Tag</a></li><li class="depth-0"><a href="#25-gitignore" data-for="25-gitignore">25. .gitignore</a></li><li class="depth-0"><a href="#26-git-工作流程" data-for="26-git-工作流程">26. Git 工作流程</a></li><li class="depth-1"><a href="#简单个人流程" data-for="简单个人流程">简单个人流程</a></li><li class="depth-1"><a href="#团队开发流程" data-for="团队开发流程">团队开发流程</a></li><li class="depth-0"><a href="#27-git-常见名词总结" data-for="27-git-常见名词总结">27. Git 常见名词总结</a></li><li class="depth-0"><a href="#28-最常用-git-命令速查" data-for="28-最常用-git-命令速查">28. 最常用 Git 命令速查</a></li><li class="depth-0"><a href="#总结" data-for="总结">总结</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v5.0.0</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script src="../static/resource-after-e13fffa1.js" type="application/javascript" data-persist="true"></script><script src="../static/resource-after-8b336f9a.js" type="application/javascript" data-persist="true"></script><script src="../static/resource-after-baba652b.js" type="application/javascript" data-persist="true"></script><script src="../static/resource-after-5eb75950.js" type="module" data-persist="true"></script><script src="../static/resource-after-683f275d.js" type="application/javascript" data-persist="true"></script><script src="../postscript.js" type="module" data-persist="true"></script></html>

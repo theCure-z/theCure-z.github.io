@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Quartz 5
+  pageTitle: Z's blog
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
@@ -84,7 +84,7 @@ plugins:
   - source: "@quartz-community/latex"
     enabled: true
     options:
-      renderEngine: katex
+      renderEngine: mathjax 
     order: 80
   - source: "@quartz-community/citations"
     enabled: false

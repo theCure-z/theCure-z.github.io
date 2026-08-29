@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "d8e63714b26c4349",
+        "id": "74081ad570425475",
         "type": "tabs",
         "children": [
           {
-            "id": "5c06c967d3439d53",
+            "id": "acf7173bc77d9c31",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "爱智慧/宗教/基督.md",
+                "file": "算法&Math/强化学习/2 马尔科夫决策过程.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "基督"
+              "title": "2 马尔科夫决策过程"
             }
           }
         ]
@@ -188,24 +188,27 @@
       "bases:新建数据库": false
     }
   },
-  "active": "5c06c967d3439d53",
+  "active": "acf7173bc77d9c31",
   "lastOpenFiles": [
+    "算法&Math/强化学习/1 Intro.md",
+    "images/rl/1监督学习示意.png",
+    "算法&Math/强化学习/2 马尔科夫决策过程.md",
     "index.md",
-    "算法&Math/最大似然估计.md",
+    "images/leastsquare/最小二乘法.jpeg",
+    "images/leastsquare/迭代100次后.png",
+    "images/leastsquare/3d.png",
     "爱智慧/宗教/基督.md",
-    "images/cs/cs net/4数据平面与控制平面.png",
-    "images/cs/cs net/4网络层总览.png",
+    "linux/git.md",
+    "算法&Math/最大似然估计.md",
+    "images/cs net/4数据平面与控制平面.png",
+    "images/cs net/4网络层总览.png",
     "images/cs/cs net/image.png",
     "images/cs/cs net/image(1).png",
-    "images/cs/cs net/3数据块格式.png",
-    "images/cs/cs net/3传输层流程示意.png",
-    "images/cs/cs net/3传输层总览.png",
-    "images/cs/cs net/3UDP报文细节.png",
-    "images/cs/cs net",
-    "images/algorithm/leastsquare/最小二乘法.jpeg",
-    "images/algorithm/leastsquare/3d.png",
-    "images/algorithm/leastsquare",
-    "images/algorithm/rl",
+    "images/cs net/3数据块格式.png",
+    "images/cs net/3传输层流程示意.png",
+    "images/cs net",
+    "images/leastsquare",
+    "images/rl",
     "images/algorithm/强化学习",
     "images/algorithm/最小二乘法",
     "images/algorithm",
@@ -232,10 +235,6 @@
     "计算机/计算机网络/Chapter3 传输层.md",
     "linux/Linux.md",
     "linux/命令.md",
-    "linux/文件系统.md",
-    "linux/Bash语言.md",
-    "linux/GDB Tutorial.md",
-    "linux/正则表达式.md",
     "未命名.canvas"
   ]
 }
