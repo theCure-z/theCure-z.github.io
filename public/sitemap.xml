@@ -1,6 +1,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url>
     <loc>https://quartz.jzhao.xyz/</loc>
-    <lastmod>2026-08-29T10:24:11.000Z</lastmod>
+    <lastmod>2026-08-29T15:47:00.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/cpp/%E9%9A%8F%E8%AE%B0</loc>
     <lastmod>2026-08-29T10:24:11.000Z</lastmod>
@@ -15,7 +15,7 @@
     <lastmod>2026-08-29T10:24:11.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/linux/git</loc>
-    <lastmod>2026-08-29T14:34:33.467Z</lastmod>
+    <lastmod>2026-08-29T15:47:00.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/linux/%E5%91%BD%E4%BB%A4</loc>
     <lastmod>2026-08-29T10:24:11.000Z</lastmod>
@@ -36,7 +36,7 @@
     <lastmod>2026-08-29T10:24:11.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/%E7%AE%97%E6%B3%95-and-math/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95</loc>
-    <lastmod>2026-08-29T10:24:11.000Z</lastmod>
+    <lastmod>2026-08-29T15:47:00.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/%E7%AE%97%E6%B3%95-and-math/%E7%9F%A9%E9%98%B5%E8%AE%BA</loc>
     <lastmod>2026-08-29T10:24:11.000Z</lastmod>
@@ -44,11 +44,17 @@
     <loc>https://quartz.jzhao.xyz/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/nav2/navfn_planner</loc>
     <lastmod>2026-08-29T10:24:11.000Z</lastmod>
   </url><url>
-    <loc>https://quartz.jzhao.xyz/%E7%88%B1%E6%99%BA%E6%85%A7/%E5%93%B2%E5%AD%A6/%E5%85%8B%E5%B0%94%E5%87%AF%E9%83%AD%E5%B0%94%EF%BC%9A%E3%80%8A%E9%9D%9E%E6%AD%A4%E5%8D%B3%E5%BD%BC%E3%80%8B-%E4%BF%A1%E4%BB%B0%E4%B8%8E%E7%90%86%E6%80%A7%E7%9A%84%E5%86%B3%E8%A3%82</loc>
-    <lastmod>2026-08-29T10:24:11.000Z</lastmod>
+    <loc>https://quartz.jzhao.xyz/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/chapter3-%E4%BC%A0%E8%BE%93%E5%B1%82</loc>
+    <lastmod>2026-08-29T15:47:00.000Z</lastmod>
   </url><url>
-    <loc>https://quartz.jzhao.xyz/%E7%88%B1%E6%99%BA%E6%85%A7/%E5%AE%97%E6%95%99/%E5%9F%BA%E7%9D%A3</loc>
-    <lastmod>2026-08-29T10:24:11.000Z</lastmod>
+    <loc>https://quartz.jzhao.xyz/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/chapter4-%E7%BD%91%E7%BB%9C%E5%B1%82</loc>
+    <lastmod>2026-08-29T15:47:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/%E7%AE%97%E6%B3%95-and-math/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/1-intro</loc>
+    <lastmod>2026-08-29T15:47:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/%E7%AE%97%E6%B3%95-and-math/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/2-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B</loc>
+    <lastmod>2026-09-01T08:40:51.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/chapter-10_exceptional-control-flow(signals--and--nonlocal-jumps)</loc>
     <lastmod>2026-08-29T10:24:11.000Z</lastmod>
@@ -83,63 +89,57 @@
     <loc>https://quartz.jzhao.xyz/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/chapter-9_exceptional-control-flow(exception--and--process)</loc>
     <lastmod>2026-08-29T10:24:11.000Z</lastmod>
   </url><url>
-    <loc>https://quartz.jzhao.xyz/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/chapter3-%E4%BC%A0%E8%BE%93%E5%B1%82</loc>
+    <loc>https://quartz.jzhao.xyz/%E7%88%B1%E6%99%BA%E6%85%A7/%E5%AE%97%E6%95%99/%E5%9F%BA%E7%9D%A3</loc>
     <lastmod>2026-08-29T10:24:11.000Z</lastmod>
   </url><url>
-    <loc>https://quartz.jzhao.xyz/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/chapter4-%E7%BD%91%E7%BB%9C%E5%B1%82</loc>
-    <lastmod>2026-08-29T10:24:11.000Z</lastmod>
-  </url><url>
-    <loc>https://quartz.jzhao.xyz/%E7%AE%97%E6%B3%95-and-math/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/1-intro</loc>
-    <lastmod>2026-08-29T10:24:11.000Z</lastmod>
-  </url><url>
-    <loc>https://quartz.jzhao.xyz/%E7%AE%97%E6%B3%95-and-math/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/2-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B</loc>
+    <loc>https://quartz.jzhao.xyz/%E7%88%B1%E6%99%BA%E6%85%A7/%E5%93%B2%E5%AD%A6/%E5%85%8B%E5%B0%94%E5%87%AF%E9%83%AD%E5%B0%94%EF%BC%9A%E3%80%8A%E9%9D%9E%E6%AD%A4%E5%8D%B3%E5%BD%BC%E3%80%8B-%E4%BF%A1%E4%BB%B0%E4%B8%8E%E7%90%86%E6%80%A7%E7%9A%84%E5%86%B3%E8%A3%82</loc>
     <lastmod>2026-08-29T10:24:11.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/cpp/</loc>
-    <lastmod>2026-08-29T15:46:40.849Z</lastmod>
+    <lastmod>2026-09-01T08:48:22.828Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/%E7%AE%97%E6%B3%95-and-math/</loc>
-    <lastmod>2026-08-29T15:46:40.849Z</lastmod>
+    <lastmod>2026-09-01T08:48:22.828Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/nav2/</loc>
-    <lastmod>2026-08-29T15:46:40.849Z</lastmod>
+    <lastmod>2026-09-01T08:48:22.828Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</loc>
-    <lastmod>2026-08-29T15:46:40.849Z</lastmod>
-  </url><url>
-    <loc>https://quartz.jzhao.xyz/%E7%88%B1%E6%99%BA%E6%85%A7/%E5%93%B2%E5%AD%A6/</loc>
-    <lastmod>2026-08-29T15:46:40.849Z</lastmod>
-  </url><url>
-    <loc>https://quartz.jzhao.xyz/%E7%88%B1%E6%99%BA%E6%85%A7/</loc>
-    <lastmod>2026-08-29T15:46:40.849Z</lastmod>
-  </url><url>
-    <loc>https://quartz.jzhao.xyz/%E7%88%B1%E6%99%BA%E6%85%A7/%E5%AE%97%E6%95%99/</loc>
-    <lastmod>2026-08-29T15:46:40.849Z</lastmod>
-  </url><url>
-    <loc>https://quartz.jzhao.xyz/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</loc>
-    <lastmod>2026-08-29T15:46:40.849Z</lastmod>
-  </url><url>
-    <loc>https://quartz.jzhao.xyz/%E8%AE%A1%E7%AE%97%E6%9C%BA/</loc>
-    <lastmod>2026-08-29T15:46:40.849Z</lastmod>
+    <lastmod>2026-09-01T08:48:22.828Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2026-08-29T15:46:40.849Z</lastmod>
+    <lastmod>2026-09-01T08:48:22.828Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/%E8%AE%A1%E7%AE%97%E6%9C%BA/</loc>
+    <lastmod>2026-09-01T08:48:22.828Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/%E7%AE%97%E6%B3%95-and-math/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2026-08-29T15:46:40.849Z</lastmod>
+    <lastmod>2026-09-01T08:48:22.828Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</loc>
+    <lastmod>2026-09-01T08:48:22.828Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/%E7%88%B1%E6%99%BA%E6%85%A7/%E5%AE%97%E6%95%99/</loc>
+    <lastmod>2026-09-01T08:48:22.828Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/%E7%88%B1%E6%99%BA%E6%85%A7/</loc>
+    <lastmod>2026-09-01T08:48:22.828Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/%E7%88%B1%E6%99%BA%E6%85%A7/%E5%93%B2%E5%AD%A6/</loc>
+    <lastmod>2026-09-01T08:48:22.828Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/tags/%E4%B8%BB%E6%9C%BA%E5%90%8D%E7%A7%B0</loc>
-    <lastmod>2026-08-29T15:46:40.849Z</lastmod>
+    <lastmod>2026-09-01T08:48:22.828Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/tags/%E4%B8%8A%E4%B8%80%E4%B8%AA%E5%91%BD%E4%BB%A4%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC</loc>
-    <lastmod>2026-08-29T15:46:40.849Z</lastmod>
+    <lastmod>2026-09-01T08:48:22.828Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/tags/%E6%89%80%E6%9C%89%E5%8F%82%E6%95%B0%E7%9A%84%E5%88%97%E8%A1%A8</loc>
-    <lastmod>2026-08-29T15:46:40.849Z</lastmod>
+    <lastmod>2026-09-01T08:48:22.828Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/tags/%E8%BE%93%E5%85%A5%E5%8F%82%E6%95%B0%E6%95%B0%E9%87%8F</loc>
-    <lastmod>2026-08-29T15:46:40.849Z</lastmod>
+    <lastmod>2026-09-01T08:48:22.828Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/tags/</loc>
-    <lastmod>2026-08-29T15:46:40.849Z</lastmod>
+    <lastmod>2026-09-01T08:48:22.828Z</lastmod>
   </url></urlset>
