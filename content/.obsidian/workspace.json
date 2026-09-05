@@ -190,6 +190,10 @@
   },
   "active": "acf7173bc77d9c31",
   "lastOpenFiles": [
+    "images/rl/3 各个方法的统一视角.png",
+    "算法&Math/强化学习/3 表格型方法.md",
+    "算法&Math/强化学习/3 b表格型方法.md",
+    "算法&Math/强化学习/3 表格性方法.md",
     "算法&Math/强化学习/1 Intro.md",
     "images/rl/1监督学习示意.png",
     "算法&Math/强化学习/2 马尔科夫决策过程.md",
@@ -232,9 +236,6 @@
     "计算机/计算机组成原理/Chapter 2_Machine Level Programming.md",
     "计算机/计算机组成原理/Chapter 1_Bits Bytes & Integers.md",
     "计算机/计算机网络/Chapter4 网络层.md",
-    "计算机/计算机网络/Chapter3 传输层.md",
-    "linux/Linux.md",
-    "linux/命令.md",
     "未命名.canvas"
   ]
 }
